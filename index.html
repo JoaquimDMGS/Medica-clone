@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulas - Grande e Obesas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        fieldset {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        legend {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #007bff;
+            padding: 0 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .radio-group label, .checkbox-group label {
+            display: inline-block;
+            font-weight: normal;
+        }
+        .radio-group input, .checkbox-group input {
+            width: auto;
+            margin-right: 5px;
+        }
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Formulário de Anamnese Digital</h1>
+        <h2>Clínica de Saúde e Bem-Estar "TecnoVida"</h2>
+
+        <form action="#" method="POST">
+
+            <fieldset>
+                <legend>1. Dados Pessoais (5 Campos)</legend>
+
+                <div class="form-group">
+                    <label for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" name="nome_completo" required placeholder="Seu nome e sobrenome">
+                </div>
+
+                <div class="form-group">
+                    <label for="nascimento">Data de Nascimento:</label>
+                    <input type="date" id="nascimento" name="data_nascimento" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="genero">Gênero:</label>
+                    <select id="genero" name="genero" required>
+                        <option value="" disabled selected>Selecione seu gênero</option>
+                        <option value="F">Feminino</option>
+                        <option value="M">Masculino</option>
+                        <option value="O">Outro</option>
+                        <option value="NP">Prefiro não informar</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cpf">CPF (apenas dígitos):</label>
+                    <input type="number" id="cpf" name="cpf" required placeholder="Ex: 12345678900">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required placeholder="seu.email@exemplo.com">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>2. Histórico de Saúde (5 Campos)</legend>
+
+                <div class="form-group">
+                    <label>Possui alguma doença crônica?</label>
+                    <div class="radio-group">
+                        <label for="cronica_sim">
+                            <input type="radio" id="cronica_sim" name="doenca_cronica" value="Sim" required> Sim
+                        </label>
+                        <label for="cronica_nao">
+                            <input type="radio" id="cronica_nao" name="doenca_cronica" value="Não"> Não
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="medicamentos">Quais medicamentos você utiliza regularmente?</label>
+                    <textarea id="medicamentos" name="medicamentos" rows="4" placeholder="Liste os nomes e as dosagens, se souber."></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label for="fumante">Você fuma?</label>
+                    <input type="checkbox" id="fumante" name="fumante" value="Sim">
+                </div>
+
+                <div class="form-group">
+                    <label for="altura">Altura (em cm):</label>
+                    <input type="number" id="altura" name="altura" min="50" max="300" placeholder="Ex: 175" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="peso">Peso (em kg):</label>
+                    <input type="number" id="peso" name="peso" step="0.1" min="10" max="500" placeholder="Ex: 75.5" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>3. Detalhes da Consulta (5 Campos)</legend>
+
+                <div class="form-group">
+                    <label for="motivo_consulta">Qual é o principal motivo da sua consulta?</label>
+                    <textarea id="motivo_consulta" name="motivo_consulta" rows="3" placeholder="Descreva brevemente sua queixa ou objetivo."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="exercicios">Com que frequência você pratica exercícios físicos?</label>
+                    <select id="exercicios" name="frequencia_exercicios" required>
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="Diariamente">Diariamente</option>
+                        <option value="Semanalmente">Semanalmente</option>
+                        <option value="Raramente">Raramente</option>
+                        <option value="Nunca">Nunca</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="data_ultima_consulta">Data da Última Consulta (aproximada):</label>
+                    <input type="date" id="data_ultima_consulta" name="data_ultima_consulta">
+                </div>
+
+                <div class="form-group">
+                    <label>Prefere ser contatado por:</label>
+                    <div class="radio-group">
+                        <label for="contato_tel">
+                            <input type="radio" id="contato_tel" name="contato_preferencial" value="Telefone" required> Telefone
+                        </label>
+                        <label for="contato_email">
+                            <input type="radio" id="contato_email" name="contato_preferencial" value="E-mail"> E-mail
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="form-group">
+                <button type="submit" class="submit-button">Enviar Formulário de Anamnese</button>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>
