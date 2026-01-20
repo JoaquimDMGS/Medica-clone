@@ -3,138 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica Bem Estar - Painel Principal</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Medprev - Agendamento</title>
     <style>
-        * {
-            box-sizing: border-box;
+        :root {
+            --verde-escuro: #3e8e63;
+            --verde-claro: #c2dfcc;
+            --cinza-fundo: #f8f9fa;
+            --texto: #333;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--cinza-fundo);
+            color: var(--texto);
         }
 
-        body, html {
-            height: 100%;
+        /* CABEÇALHO */
+        header {
+            background: #fff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        /* Fundo com imagem e sobreposição */
-        .hero-background {
-            background-image: linear-gradient(rgba(0, 48, 73, 0.7), rgba(0, 48, 73, 0.7)), 
-                              url('https://images.unsplash.com/photo-1504813184591-01572f98c85f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--texto);
+            font-weight: 500;
+        }
+
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-login {
+            text-decoration: none;
+            color: var(--verde-escuro);
+            font-weight: bold;
+        }
+
+        .btn-create {
+            background-color: var(--verde-escuro);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        /* SEÇÃO HERO */
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            color: #222;
+        }
+
+        .main-buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background-color: var(--verde-escuro);
             color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            width: 300px;
+            font-size: 1rem;
+            cursor: pointer;
         }
 
-        /* Cabeçalho */
-        header {
-            padding: 40px 20px;
-            text-align: center;
+        .btn-secondary {
+            background-color: var(--verde-claro);
+            color: var(--verde-escuro);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            width: 300px;
+            cursor: pointer;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Grid de Tópicos (Cards) */
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            width: 90%;
-            max-width: 1100px;
+        /* UNIDADES */
+        .unidades-container {
+            max-width: 800px;
+            margin: 0 auto;
             padding: 20px;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px); /* Efeito de vidro */
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 40px 20px;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            color: white;
-        }
-
-        .card:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        }
-
-        .card i {
-            font-size: 3rem;
+        .card-unidade {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
             margin-bottom: 20px;
-            color: #4db6ac;
+            border-left: 5px solid var(--verde-escuro);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            line-height: 1.4;
-        }
-
-        /* Responsividade */
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.8rem; }
-            .dashboard-grid { grid-template-columns: 1fr; }
+        .btn-agendar {
+            background-color: var(--verde-escuro);
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <div class="hero-background">
-        <header>
-            <h1>Hospital Central</h1>
-            <p>Seja bem-vindo ao seu portal de saúde</p>
-        </header>
+    <header>
+        <div class="nav-links">
+            <img src="https://via.placeholder.com/100x30?text=LOGO" alt="Logo">
+            <a href="#">Sou Paciente</a>
+            <a href="#">Sou Profissional</a>
+            <a href="#">Unidades</a>
+            <a href="#">Sobre nós</a>
+        </div>
 
-        <main class="dashboard-grid">
-            <a href="#" class="card">
-                <i class="fas fa-calendar-check"></i>
-                <h3>Agendamentos</h3>
-                <p>Marque ou altere suas datas de consulta com facilidade.</p>
-            </a>
+        <div class="user-area">
+            <a href="#" class="btn-login">Login</a>
+        </div>
+    </header>
 
-            <a href="#" class="card">
-                <i class="fas fa-user-md"></i>
-                <h3>Consultas</h3>
-                <p>Visualize seu histórico e próximas consultas presenciais ou online.</p>
-            </a>
+    <main>
+        <section class="hero">
+            <h1>AGENDE CONSULTAS E EXAMES</h1>
+            <p>Com valores acessíveis em <strong>Alta Floresta - MT</strong></p>
+            
+            <div class="main-buttons">
+                <button class="btn-primary">Orçamento ou agendamento</button>
+                <button class="btn-secondary">Fale conosco</button>
+            </div>
+        </section>
 
-            <a href="#" class="card">
-                <i class="fas fa-file-medical"></i>
-                <h3>Prontuário</h3>
-                <p>Acesse exames, laudos e seu histórico médico completo.</p>
-            </a>
+        <section class="unidades-container">
+            <h3>ENCONTRE UMA UNIDADE PERTO DE VOCÊ</h3>
+            
+            <div class="card-unidade">
+                <h4>Unidade Digital | Medprev Alta Floresta - MT</h4>
+                <p>ℹ️ Exclusiva para agendamento de consultas online (teleconsulta)</p>
+                <p>🕒 Agende sozinho 24h por dia</p>
+                <button class="btn-agendar">Agendar Consulta Online</button>
+            </div>
 
-            <a href="#" class="card">
-                <i class="fas fa-notes-medical"></i>
-                <h3>Atendimentos</h3>
-                <p>Acompanhe seus atendimentos recentes e prescrições.</p>
-            </a>
-        </main>
-    </div>
+            </div>
+        </section>
+    </main>
 
 </body>
 </html>
