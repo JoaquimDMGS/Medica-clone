@@ -17,7 +17,6 @@
             font-family: Arial, sans-serif;
             margin: 0;
             color: var(--texto);
-            /* Gradiente suave para o texto não sumir no fundo verde */
             background-image: linear-gradient(rgba(248, 249, 250, 0.8), rgba(248, 249, 250, 0.8)), var(--img-fundo);
             background-size: cover;
             background-position: center;
@@ -40,6 +39,7 @@
         .nav-links {
             display: flex;
             gap: 20px;
+            align-items: center;
         }
 
         .nav-links a {
@@ -59,33 +59,28 @@
             animation: fadeIn 1s ease-out;
         }
 
-        .btn-primary, .btn-secondary, .btn-agendar, .btn-login {
+        /* --- AJUSTE DE BOTÕES PARA RESPONSIVIDADE --- */
+        .btn-primary, .btn-secondary {
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
             cursor: pointer;
-        }
-
-        .btn-primary:hover, .btn-secondary:hover, .btn-agendar:hover, .btn-login:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            font-size: 1rem;
+            border: none;
+            width: 100%; /* Ocupa a largura disponível... */
+            max-width: 300px; /* ...mas não passa de 300px */
+            display: block;
         }
 
         .btn-primary {
             background-color: var(--verde-escuro);
             color: white;
             padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
-            width: 300px;
-            font-size: 1rem;
         }
 
         .btn-secondary {
             background-color: var(--verde-claro);
             color: var(--verde-escuro);
             padding: 12px 30px;
-            border: none;
-            border-radius: 8px;
-            width: 300px;
         }
 
         .unidades-container {
@@ -105,26 +100,17 @@
             backdrop-filter: blur(5px);
         }
 
-        .card-unidade:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 1);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            border-left-width: 15px;
-        }
-
         .btn-agendar {
             background-color: var(--verde-escuro);
             color: white;
             border: none;
-            padding: 10px;
+            padding: 12px;
             width: 100%;
             border-radius: 5px;
             margin-top: 15px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            display: block;
+            text-decoration: none;
+            text-align: center;
         }
 
         .main-buttons {
@@ -133,6 +119,37 @@
             align-items: center;
             gap: 15px;
             margin-top: 20px;
+        }
+
+        /* ============================================================
+           COMANDOS PARA DISPOSITIVOS MÓVEIS (MEDIA QUERIES)
+           ============================================================ */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column; (Logo em cima, login embaixo no celular)
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .nav-links {
+                gap: 10px;
+                font-size: 0.85rem; (Diminui um pouco o texto no celular)
+                flex-wrap: wrap; (Permite que os links quebrem linha se necessário)
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 90%; (Diminui o tanmanho dos butoes)
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .btn-login {
@@ -148,10 +165,10 @@
     <header>
         <div class="nav-links">
             <img src="imagem.pjp/Logo- prog WEB.png" style="width: 30px; height: auto;">
-            <a href="#">Sou Paciente</a>
-            <a href="#">Sou Profissional</a>
+            <a href="#">Paciente</a>
+            <a href="#">Profissional</a>
             <a href="#">Unidades</a>
-            <a href="#">Sobre nós</a>
+            <a href="#">Sobre</a>
         </div>
 
         <div class="user-area">
@@ -162,8 +179,7 @@
     <main>
         <section class="hero">
             <h1>AGENDE CONSULTAS E EXAMES</h1>
-            <p>Com valores acessíveis em <strong>Alta Floresta
-            </strong></p>
+            <p>Com valores acessíveis em <strong>Alta Floresta</strong></p>
             
             <div class="main-buttons">
                 <button class="btn-primary">Agendamento</button>
@@ -176,12 +192,10 @@
             
             <div class="card-unidade">
                 <h4>Unidade Digital | Medprev Alta Floresta</h4>
-                <p>ℹ️ Exclusiva para agendamento de consultas online (teleconsulta)</p>
+                <p>ℹ️ Exclusiva para agendamento online</p>
                 <p>🕒 Agende sozinho 24h por dia</p>
-                <p>❗ indisponível no momento</p>
-                <button class="btn-agendar">
+                <p>❗ Disponível em breve</p>
                 <a href="Agendar.html" class="btn-agendar">Agendar Consulta Online</a>
-        </div>
             </div>
         </section>
     </main>
