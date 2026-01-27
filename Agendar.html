@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário TecnoGrande - Clínica de Saúde</title>
+    <title>Agendamento TecnoGrande - Clínica de Saúde</title>
     <style>
         /* Estilos Globais */
         body {
@@ -253,15 +253,12 @@
 
     <script>
         function enviarEVoltar() {
-            // Verifica se os campos obrigatórios estão preenchidos
             const form = document.getElementById('meuFormulario');
             
             if (form.checkValidity()) {
                 alert("Formulário enviado com sucesso!");
-                // Redireciona para a home
                 window.location.href = "home.html";
             } else {
-                // Se faltar algo, o navegador mostrará o aviso padrão
                 form.reportValidity();
             }
         }
