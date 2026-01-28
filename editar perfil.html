@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil - Joaquim</title>
+    <style>
+        :root {
+            --primary-green: #3e8e63;
+            --bg-gray: #f4f7f6;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-gray);
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        .edit-card {
+            background: white;
+            width: 100%;
+            max-width: 450px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: var(--primary-green);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        form { padding: 25px; }
+
+        .form-group { margin-bottom: 20px; }
+
+        label {
+            display: block;
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-sizing: border-box; /* Garante que o padding não quebre a largura */
+            font-size: 16px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        input:focus { border-color: var(--primary-green); }
+
+        .btn-save {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .btn-save:hover { background-color: #2d6a4a; }
+
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="edit-card">
+    <div class="header">
+        <h3>Editar Informações</h3>
+    </div>
+
+    <form id="editForm">
+        <div class="form-group">
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" value="joaquim" required>
+        </div>
+
+        <div class="form-group">
+            <label for="nascimento">Data de Nascimento</label>
+            <input type="date" id="nascimento" value="1990-01-01">
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail de Acesso</label>
+            <input type="email" id="email" value="joaquim@gmail.com" required>
+        </div>
+
+        <button type="submit" class="btn-save">Salvar Alterações</button>
+        <a href="javascript:history.back()" class="back-btn">Cancelar e Voltar</a>
+    </form>
+</div>
+
+<script>
+    document.getElementById('editForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Impede a página de recarregar
+
+        const dadosAtualizados = {
+            nome: document.getElementById('nome').value,
+            nascimento: document.getElementById('nascimento').value,
+            email: document.getElementById('email').value
+        };
+
+        console.log("Dados enviados:", dadosAtualizados);
+        alert("Sucesso! As informações de " + dadosAtualizados.nome + " foram atualizadas.");
+        
+        // Aqui você redirecionaria de volta para o perfil
+        // window.location.href = 'perfil.html';
+        window.location.href = 'Perfil.htm';
+    });
+</script>
+
+</body>
+</html>
